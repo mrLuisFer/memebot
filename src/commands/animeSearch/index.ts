@@ -1,6 +1,7 @@
 import { MessageEmbed } from 'discord.js'
-import { MsgWithArgs } from '../../types/msgArgs'
 import fetch from 'node-fetch'
+import { MsgWithArgs } from '../../types/msgArgs'
+import { getRandomEmbedColor } from '../../utils/embedColors'
 
 export const anime = async ({ msg, args }: MsgWithArgs): Promise<void> => {
   if (args.length > 0) {
@@ -13,9 +14,10 @@ export const anime = async ({ msg, args }: MsgWithArgs): Promise<void> => {
     console.log(data)
 
     if (data.results.length > 0 || data.results !== undefined) {
+      const embedColor = getRandomEmbedColor()
       const results = data.results[0]
       try {
-        const embed: MessageEmbed = new MessageEmbed().setTitle(results.title).setColor('#512D6D')
+        const embed: MessageEmbed = new MessageEmbed().setTitle(results.title).setColor(embedColor)
 
         msg.channel.send(embed)
       } catch (err) {
