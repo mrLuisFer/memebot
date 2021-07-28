@@ -1,6 +1,6 @@
 import { MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
-import { MsgWithArgs } from 'src/types/msgArgs'
+import { MsgWithArgs } from '../../../types/msgArgs'
 import { errorEmbed } from './errorEmbed'
 
 export const npm = async ({ msg, args }: MsgWithArgs) => {
