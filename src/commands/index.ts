@@ -1,7 +1,7 @@
 export const init = (command: string) => {
   const COMMANDS: any = {
-    ping: console.log("Pong"),
-  };
+    ping: console.log('Pong'),
+  }
 
-  COMMANDS[command];
-};
+  COMMANDS[command]
+}

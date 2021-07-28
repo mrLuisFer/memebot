@@ -1,33 +1,30 @@
-import { Client } from "discord.js";
-import { config } from "./config";
-import { presence } from "./utils/botPresence";
-import { init } from "./commands";
+import { Client } from 'discord.js'
+import { config } from './config'
+import { presence } from './utils/botPresence'
+import { init } from './commands'
 
-const client: Client = new Client();
+const client: Client = new Client()
 
-client.on("ready", () => {
-  console.log(`Bot is ready as ${client?.user?.tag}!`);
-  presence(client);
-});
+client.on('ready', () => {
+  console.log(`Bot is ready as ${client?.user?.tag}!`)
+  presence(client)
+})
 
-client.on("message", (message) => {
+client.on('message', (message) => {
   if (
     !message.content.startsWith(config.prefix) ||
     message.author.bot ||
     message.author === client.user
   )
-    return;
+    return
 
-  const args: string[] = message.content
-    .slice(config.prefix.length)
-    .trim()
-    .split(/ +/g);
-  const command: string = args?.shift()?.toLowerCase() || "";
+  const args: string[] = message.content.slice(config.prefix.length).trim().split(/ +/g)
+  const command: string = args?.shift()?.toLowerCase() || ''
 
-  console.log(command);
-  console.log(args);
+  console.log(command)
+  console.log(args)
 
-  init(command);
-});
+  init(command)
+})
 
-client.login(config.token);
+client.login(config.token)
