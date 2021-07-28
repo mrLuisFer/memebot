@@ -1,6 +1,10 @@
 import { MessageEmbed } from 'discord.js'
 
-const solution: string = 'Revisa que hayas escrito bien el nombre del paquete'
+const solution: string = `
+Revisa que hayas escrito bien el nombre del paquete
+
+Remplaza los espacios por \`-\` (guión)
+`
 
 export const errorEmbed = (randomGif: string): MessageEmbed => {
   const embed = new MessageEmbed()

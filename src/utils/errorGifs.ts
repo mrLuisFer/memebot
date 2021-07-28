@@ -13,7 +13,6 @@ export const errorGifs: string[] = [
 
 export const getRandomErrorGif = (): string => {
   const gifId: number = Math.floor(Math.random() * errorGifs.length)
-  // console.log(gifId)
 
   const randomGif: string = errorGifs[gifId]
   return randomGif
