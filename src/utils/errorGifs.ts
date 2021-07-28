@@ -1,4 +1,4 @@
-const errorGifs: string[] = [
+export const errorGifs: string[] = [
   'https://media.giphy.com/media/TqiwHbFBaZ4ti/giphy.gif',
   'https://media.giphy.com/media/oYQ9HRm5Mo7VXeMNVR/giphy.gif',
   'https://images-ext-1.discordapp.net/external/RBrBPOqtBk1IeYXMDmiKjkj-QYQvWj0IVmB0-9Q8Y5A/https/media.giphy.com/media/iJCo9daAP0xugHhhfb/giphy.gif',
@@ -13,6 +13,7 @@ const errorGifs: string[] = [
 
 export const getRandomErrorGif = (): string => {
   const gifId: number = Math.floor(Math.random() * errorGifs.length)
+  // console.log(gifId)
 
   const randomGif: string = errorGifs[gifId]
   return randomGif

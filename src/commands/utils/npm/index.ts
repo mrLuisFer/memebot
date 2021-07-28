@@ -2,8 +2,11 @@ import { MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
 import { MsgWithArgs } from '../../../types/msgArgs'
 import { errorEmbed } from './errorEmbed'
+import { getRandomErrorGif } from '../../../utils/errorGifs'
 
 export const npm = async ({ msg, args }: MsgWithArgs) => {
+  const errorGif: string = getRandomErrorGif()
+
   if (args.length > 0) {
     const arg: string = args.join('-')
     const response = await fetch(`https://api.npms.io/v2/package/${arg}`)
@@ -50,9 +53,9 @@ export const npm = async ({ msg, args }: MsgWithArgs) => {
         .setThumbnail('https://media.giphy.com/media/gHnBLyeYE6hboT3t3o/giphy.gif')
       msg.channel.send(embed)
     } else if (data.code === 'NOT_FOUND' || data.code === 'INVALID_PARAMETER') {
-      msg.channel.send(errorEmbed)
+      msg.channel.send(errorEmbed(errorGif))
     }
   } else {
-    msg.channel.send(errorEmbed)
+    msg.channel.send(errorEmbed(errorGif))
   }
 }
