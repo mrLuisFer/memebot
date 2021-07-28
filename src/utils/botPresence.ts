@@ -1,7 +1,7 @@
 import { Client } from 'discord.js'
 import { config } from '../config'
 
-export const presence = (client: Client) => {
+export const presence = (client: Client): void => {
   setInterval(() => {
     const botStatus: string[] = config.status
     const statusId: number = Math.floor(Math.random() * botStatus.length)

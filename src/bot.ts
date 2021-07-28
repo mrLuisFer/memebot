@@ -1,4 +1,4 @@
-import { Client } from 'discord.js'
+import { Client, Message } from 'discord.js'
 import { config } from './config'
 import { presence } from './utils/botPresence'
 import { init } from './commands'
@@ -10,7 +10,7 @@ client.on('ready', () => {
   presence(client)
 })
 
-client.on('message', (message) => {
+client.on('message', (message: Message) => {
   if (
     !message.content.startsWith(config.prefix) ||
     message.author.bot ||
@@ -24,7 +24,7 @@ client.on('message', (message) => {
   console.log(command)
   console.log(args)
 
-  init(command)
+  init(command, args, message)
 })
 
 client.login(config.token)
