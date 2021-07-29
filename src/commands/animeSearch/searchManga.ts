@@ -3,10 +3,12 @@ import fetch from 'node-fetch'
 import { baseUrl } from './index'
 import { getEmbedResult } from './utils/embedResult'
 
-export const searchAnime = async (msg: Message, arg: string, embedColor: string) => {
-  const endpoint: string = `${baseUrl}/search/anime?q=${arg}&limit=1`
-  const res = await fetch(endpoint)
+export const searchManga = async (msg: Message, arg: string, embedColor: string) => {
+  const url: string = `${baseUrl}/search/manga?q=${arg}&limit=1`
+  const res = await fetch(url)
   const data = await res.json()
+
+  console.log(data)
 
   if (data.results.length > 0 || data.results !== undefined) {
     try {
