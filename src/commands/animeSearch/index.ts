@@ -13,6 +13,9 @@ export const anime = async ({ msg, args }: MsgWithArgs): Promise<void> => {
 
     if (args[0] === '--m' || args[0] === '--manga') {
       searchManga(msg, arg, randomEmbedColor)
+    } else if (args[0].startsWith('--')) {
+      const embed = infoEmbed(randomEmbedColor)
+      msg.channel.send(embed)
     } else {
       searchAnime(msg, arg, randomEmbedColor)
     }
