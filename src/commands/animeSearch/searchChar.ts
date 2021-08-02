@@ -21,15 +21,6 @@ export const searchChar = async (msg: Message, arg: string, embedColor: string) 
             `
         📎 Character Url:
         ${result.url}
-        
-        ${
-          result.alternative_names.length > 0 &&
-          `
-          Alternative names:
-          
-          ${result.alternative_names.map((name: string) => `${name}`)}
-          `.trim()
-        }
         `.trim()
           )
           .setURL(result.url)

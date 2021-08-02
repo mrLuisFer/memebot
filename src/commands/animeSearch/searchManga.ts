@@ -8,8 +8,6 @@ export const searchManga = async (msg: Message, arg: string, embedColor: string)
   const res = await fetch(url)
   const data = await res.json()
 
-  console.log(arg)
-
   if (data.results.length > 0 || data.results !== undefined) {
     try {
       const embed = getEmbedResult(data, embedColor)
