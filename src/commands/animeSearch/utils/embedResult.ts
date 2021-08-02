@@ -3,8 +3,8 @@ import { MessageEmbed } from 'discord.js'
 export const getEmbedResult = (data: any, embedColor: string) => {
   const results = data.results[0]
 
-  const startDate = new Date(results.start_date).toDateString()
-  const endDate = new Date(results.end_date).toDateString()
+  const startDate: string = new Date(results.start_date).toDateString()
+  const endDate: string = new Date(results.end_date).toDateString()
 
   const embed: MessageEmbed = new MessageEmbed()
     .setTitle(`📦 ${results.title}`)
