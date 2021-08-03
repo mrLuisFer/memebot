@@ -4,11 +4,10 @@ import { MsgWithArgs } from '../../types/msgArgs'
 import { errorEmbed } from './errorEmbed'
 import { getRandomErrorGif } from '../../utils/errorGifs'
 
-export const npm = async ({ msg, args }: MsgWithArgs) => {
+export const npm = async ({ msg, arg }: MsgWithArgs) => {
   const errorGif: string = getRandomErrorGif()
 
-  if (args.length > 0) {
-    const arg: string = args.join('-')
+  if (arg.length > 0) {
     const response = await fetch(`https://api.npms.io/v2/package/${arg}`)
     const data = await response.json()
     if (
