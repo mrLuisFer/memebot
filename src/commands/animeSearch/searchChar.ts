@@ -1,6 +1,7 @@
 import { Message, MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
 import { baseUrl } from './index'
+import { getRandomErrorGif } from '../../utils/errorGifs'
 
 export const searchChar = async (msg: Message, arg: string, embedColor: string) => {
   const url: string = `${baseUrl}/search/people?q=${arg}&limit=1`
@@ -9,7 +10,6 @@ export const searchChar = async (msg: Message, arg: string, embedColor: string) 
 
   if (data.results.length > 0 || data.results !== undefined) {
     try {
-      console.log(data)
       const result = data.results[0]
 
       if (result !== undefined) {
@@ -27,9 +27,13 @@ export const searchChar = async (msg: Message, arg: string, embedColor: string) 
 
         msg.channel.send(embed)
       } else {
+        const gifError: string = getRandomErrorGif()
         const embedError = new MessageEmbed()
           .setTitle(`Error al buscar ${arg}`)
+          .setDescription('No se encontro el resultado en la **API** :c')
           .setColor(embedColor)
+          .setImage(gifError)
+
         msg.channel.send(embedError)
       }
     } catch (err) {
