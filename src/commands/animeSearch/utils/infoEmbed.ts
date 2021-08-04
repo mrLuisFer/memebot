@@ -1,6 +1,6 @@
 import { MessageEmbed } from 'discord.js'
 
-const infoEmbed = (color: string) => {
+const infoEmbed = (color: string, randomAnimeGif: string) => {
   const embed: MessageEmbed = new MessageEmbed()
     .setTitle('**Anime Command**')
     .setColor(color)
@@ -8,15 +8,21 @@ const infoEmbed = (color: string) => {
       `
     Puedes seguir alguno de estas flags:
 
-    \`!anime <name>\` - busca el nombre de un anime
+    \`!anime <name>\` -> Busca el nombre de un anime
 
-    \`!anime --m <name>\` - para buscar manga
-    \`!anime --manga <name>\` - para buscar manga
+    \`!anime --manga <name>\` -> Para buscar algun manga
+    \`!anime --m <name>\`
+
+    
+    \`!anime --people <name>\` -> Para buscar algun personaje
+    \`!anime --p <name>\`
 
     📝 Example:
     \`!anime naruto\`
     `.trim()
     )
+    .setImage(randomAnimeGif)
+    .setFooter('name: string')
   return embed
 }
 

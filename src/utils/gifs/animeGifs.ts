@@ -23,7 +23,7 @@ export const animeGifs: string[] = [
   'https://media.giphy.com/media/2QHLYZFJgjsFq/giphy.gif',
 ]
 
-export const getRandomErrorGif = (): string => {
+export const getRandomGif = (): string => {
   const gifId: number = Math.floor(Math.random() * animeGifs.length)
 
   const randomGif: string = animeGifs[gifId]
