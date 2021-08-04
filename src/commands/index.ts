@@ -24,7 +24,8 @@ export const init = (command: string, args: string[], message: Message): void =>
     case 'anime':
       anime({ msg: message, args, arg: argsFiltered, firstArg })
       break
-    case 'reddit' || 'r':
+    case 'reddit':
+    case 'r':
       console.info('Reddit command')
       getRandomMeme({ msg: message, arg: argsFiltered, firstArg })
       break

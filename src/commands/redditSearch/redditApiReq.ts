@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 
-export const getData = async () => {
+export const getData = async (): Promise<any> => {
   const url = 'https://www.reddit.com/r/MAAU/hot.json'
   const response = await fetch(url)
   const data: any = await response.json()
@@ -9,7 +9,7 @@ export const getData = async () => {
   return results
 }
 
-export const getCustomSubRedditData = async (subreddit: string) => {
+export const getCustomSubRedditData = async (subreddit: string): Promise<any> => {
   const url = `https://www.reddit.com/r/${subreddit}/hot.json`
   const response = await fetch(url)
   const data: any = await response.json()

@@ -16,7 +16,10 @@ export const anime = async ({ msg, args = [], arg, firstArg }: Props): Promise<v
       searchManga(msg, arg, randomEmbedColor)
     } else if (firstArg === '--p' || firstArg === '--people') {
       searchChar(msg, arg, randomEmbedColor)
-    } else if (args[0].startsWith('--')) {
+    } else if (firstArg === '--help') {
+      const embed = infoEmbed(randomEmbedColor)
+      msg.channel.send(embed)
+    } else if (firstArg.startsWith('--')) {
       const embed = infoEmbed(randomEmbedColor)
       msg.channel.send(embed)
     } else {
