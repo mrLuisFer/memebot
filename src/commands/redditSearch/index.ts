@@ -4,17 +4,16 @@ import { getRandomEmbedColor } from '../../utils/embedColors'
 import { apiEmbed } from './apiEmbed'
 import { infoEmbed } from './infoEmbed'
 
-type Props = {
-  msg: Message
-  arg: string
-  firstArg: string
-}
-
 function getRandomNumber(array: any[]): number {
   const n: number = Math.round(Math.random() * array.length)
   return n
 }
 
+type Props = {
+  msg: Message
+  arg: string
+  firstArg: string
+}
 export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
   const embedColor: string = getRandomEmbedColor()
   if (firstArg === '--sr') {
@@ -24,7 +23,7 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
     const embed = apiEmbed(data, embedColor)
 
     msg.channel.send(embed)
-  } else if (firstArg === '--help' || firstArg.startsWith('--')) {
+  } else if (firstArg === '--help' || firstArg?.startsWith('--')) {
     const embed = infoEmbed(embedColor)
     msg.channel.send(embed)
   } else {

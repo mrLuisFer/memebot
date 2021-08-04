@@ -14,7 +14,8 @@ export const apiEmbed = (data: any, embedColor: string): MessageEmbed => {
       { name: '**👍 Likes:**', value: data.ups, inline: true },
       { name: '**💬 Comments:**', value: data.num_comments, inline: true },
     ])
-    .setImage(img)
+    .setImage(img || data.url)
+    .setFooter('Si no carga la imagen, es porque posiblemente sea un video')
 
   return embed
 }
