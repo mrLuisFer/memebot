@@ -1,21 +1,35 @@
 import { Message } from 'discord.js'
-import { getData } from './redditApiReq'
+import { getData, getCustomSubRedditData } from './redditApiReq'
 import { getRandomEmbedColor } from '../../utils/embedColors'
 import { apiEmbed } from './apiEmbed'
 
 type Props = {
   msg: Message
   arg: string
+  firstArg: string
 }
 
-export const getRandomMeme = async ({ msg, arg }: Props) => {
-  const apiResults = await getData()
-  const randomApiResults: number = Math.round(Math.random() * apiResults.length)
+function getRandomNumber(array: any[]): number {
+  const n: number = Math.round(Math.random() * array.length)
+  return n
+}
 
-  const data = apiResults[randomApiResults].data
-
+export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
   const embedColor: string = getRandomEmbedColor()
 
-  const embed = apiEmbed(data, embedColor)
-  return msg.channel.send(embed)
+  if (firstArg === '--sr') {
+    const results = await getCustomSubRedditData(arg)
+    const randomId: number = getRandomNumber(results)
+    const data = results[randomId].data
+    const embed = apiEmbed(data, embedColor)
+
+    msg.channel.send(embed)
+  } else {
+    const results = await getData()
+    const randomId: number = getRandomNumber(results)
+    const data = results[randomId].data
+
+    const embed = apiEmbed(data, embedColor)
+    msg.channel.send(embed)
+  }
 }
