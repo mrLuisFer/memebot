@@ -24,11 +24,8 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
     const embed = apiEmbed(data, embedColor)
 
     msg.channel.send(embed)
-  } else if (firstArg === '--help') {
-    const embed = infoEmbed()
-    msg.channel.send(embed)
-  } else if (firstArg?.startsWith('--')) {
-    const embed = infoEmbed()
+  } else if (firstArg === '--help' || firstArg.startsWith('--')) {
+    const embed = infoEmbed(embedColor)
     msg.channel.send(embed)
   } else {
     const results = await getData()

@@ -6,9 +6,9 @@ Revisa que hayas escrito bien el nombre del paquete
 Remplaza los espacios por \`-\` (guión)
 `
 
-export const errorEmbed = (randomGif: string): MessageEmbed => {
+export const errorEmbed = (randomGif: string, embedColor: string): MessageEmbed => {
   const embed = new MessageEmbed()
-    .setColor('#F8485E')
+    .setColor(embedColor)
     .setTitle('Paquete no encontrado')
     .setAuthor(
       'npm',

@@ -16,7 +16,7 @@ export const init = (command: string, args: string[], message: Message): void =>
 
   switch (command) {
     case 'npm':
-      npm({ msg: message, arg: argsJoined })
+      npm({ msg: message, arg: argsJoined, firstArg })
       break
     case 'ping':
       console.log('Pong')
