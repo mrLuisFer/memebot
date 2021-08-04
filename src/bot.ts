@@ -22,7 +22,6 @@ client.on('message', (message: Message) => {
   const command: string = args?.shift()?.toLowerCase() || ''
 
   console.log(command)
-  console.log(args)
 
   init(command, args, message)
 })

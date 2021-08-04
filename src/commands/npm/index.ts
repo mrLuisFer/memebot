@@ -1,10 +1,14 @@
-import { MessageEmbed } from 'discord.js'
+import { Message, MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
-import { MsgWithArgs } from '../../types/msgArgs'
 import { errorEmbed } from './errorEmbed'
 import { getRandomErrorGif } from '../../utils/errorGifs'
 
-export const npm = async ({ msg, arg }: MsgWithArgs) => {
+type Props = {
+  msg: Message
+  arg: string
+}
+
+export const npm = async ({ msg, arg }: Props) => {
   const errorGif: string = getRandomErrorGif()
 
   if (arg.length > 0) {

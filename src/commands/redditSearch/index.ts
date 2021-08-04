@@ -1,12 +1,14 @@
-import { Message, MessageEmbed } from 'discord.js'
+import { Message } from 'discord.js'
 import { getData } from './redditApiReq'
 import { getRandomEmbedColor } from '../../utils/embedColors'
+import { apiEmbed } from './apiEmbed'
 
 type Props = {
   msg: Message
+  arg: string
 }
 
-export const getRandomMeme = async ({ msg }: Props) => {
+export const getRandomMeme = async ({ msg, arg }: Props) => {
   const apiResults = await getData()
   const randomApiResults: number = Math.round(Math.random() * apiResults.length)
 
@@ -14,20 +16,6 @@ export const getRandomMeme = async ({ msg }: Props) => {
 
   const embedColor: string = getRandomEmbedColor()
 
-  const img: string = data.url_overridden_by_dest
-  console.log(img)
-
-  const embed = new MessageEmbed()
-    .setAuthor(data.subreddit_name_prefixed)
-    .setColor(embedColor)
-    .setTitle(data.title)
-    .addFields([
-      { name: '**🐧 Author:**', value: data.author_fullname, inline: true },
-      { name: '**📎 Url**', value: data.url, inline: true },
-      { name: '.', value: '.' },
-      { name: '**👍 Likes:**', value: data.ups, inline: true },
-      { name: '**💬 Comments:**', value: data.num_comments, inline: true },
-    ])
-    .setImage(img)
+  const embed = apiEmbed(data, embedColor)
   return msg.channel.send(embed)
 }
