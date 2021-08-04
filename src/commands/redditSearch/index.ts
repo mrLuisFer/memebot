@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import { getData, getCustomSubRedditData } from './redditApiReq'
+import { getData, getCustomSubRedditData, getCustomSubRedditNews } from './redditApiReq'
 import { getRandomEmbedColor } from '../../utils/embedColors'
 import { apiEmbed } from './apiEmbed'
 import { infoEmbed } from './infoEmbed'
@@ -17,13 +17,27 @@ type Props = {
 export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
   const embedColor: string = getRandomEmbedColor()
   if (firstArg === '--sr') {
-    const results = await getCustomSubRedditData(arg)
-    const randomId: number = getRandomNumber(results)
-    const data = results[randomId].data
-    const embed = apiEmbed(data, embedColor)
+    if (arg.length > 0) {
+      const results = await getCustomSubRedditData(arg)
+      const randomId: number = getRandomNumber(results)
+      const data = results[randomId].data
+      const embed = apiEmbed(data, embedColor)
 
-    msg.channel.send(embed)
-  } else if (firstArg === '--help' || firstArg?.startsWith('--')) {
+      msg.channel.send(embed)
+    } else {
+      console.log('Handle error in --sr')
+    }
+  } else if (firstArg === '--n' || firstArg === '--news') {
+    if (arg.length > 0) {
+      const results = await getCustomSubRedditNews(arg)
+      const randomId: number = getRandomNumber(results)
+      const data = results[randomId].data
+
+      msg.channel.send(data)
+    } else {
+      console.log('Hanling error in --news')
+    }
+  } else if (firstArg === '--help' || firstArg?.startsWith('--') || firstArg === '--h') {
     const embed = infoEmbed(embedColor)
     msg.channel.send(embed)
   } else {

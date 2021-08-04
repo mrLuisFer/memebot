@@ -17,3 +17,12 @@ export const getCustomSubRedditData = async (subreddit: string): Promise<any> =>
 
   return results
 }
+
+export const getCustomSubRedditNews = async (subreddit: string): Promise<any> => {
+  const url = `https://www.reddit.com/r/${subreddit}/new.json`
+  const response = await fetch(url)
+  const data: any = await response.json()
+  const results = data.data.children
+
+  return results
+}
