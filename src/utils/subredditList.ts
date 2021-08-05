@@ -13,7 +13,7 @@ export const subredditList = [
   'unixporn',
 ]
 
-export const getRandomSubreddit = async (): Promise<string> => {
+export const getRandomSubreddit = (): string => {
   const subredditId: number = Math.floor(Math.random() * subredditList.length)
 
   const randomSubreddit: string = subredditList[subredditId]

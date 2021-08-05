@@ -29,7 +29,7 @@ export const getCustomSubRedditNews = async (subreddit: string): Promise<any> =>
 }
 
 export const getRandomPosts = async (): Promise<any> => {
-  const subreddit: string = await getRandomSubreddit()
+  const subreddit: string = getRandomSubreddit()
   console.log(subreddit)
   const url = `https://www.reddit.com/r/${subreddit}/hot.json`
   const response = await fetch(url)

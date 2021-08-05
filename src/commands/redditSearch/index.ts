@@ -8,6 +8,7 @@ import {
 import { getRandomEmbedColor } from '../../utils/embedColors'
 import { apiEmbed } from './apiEmbed'
 import { infoEmbed } from './infoEmbed'
+import { getRandomSubreddit } from '../../utils/subredditList'
 
 function getRandomNumber(array: any[]): number {
   const n: number = Math.round(Math.random() * array.length)
@@ -46,9 +47,10 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
   } else if (firstArg === '--random' || firstArg === '--r') {
     const results = await getRandomPosts()
     const randomId: number = getRandomNumber(results)
-    const data = results[randomId]?.data
+    const data = results[randomId].data
 
-    msg.channel.send(data)
+    const embed = apiEmbed(data, embedColor)
+    msg.channel.send(embed)
   } else if (firstArg === '--help' || firstArg?.startsWith('--') || firstArg === '--h') {
     const embed = infoEmbed(embedColor)
     msg.channel.send(embed)
