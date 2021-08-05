@@ -1,5 +1,10 @@
 import { Message } from 'discord.js'
-import { getData, getCustomSubRedditData, getCustomSubRedditNews } from './redditApiReq'
+import {
+  getData,
+  getCustomSubRedditData,
+  getCustomSubRedditNews,
+  getRandomPosts,
+} from './redditApiReq'
 import { getRandomEmbedColor } from '../../utils/embedColors'
 import { apiEmbed } from './apiEmbed'
 import { infoEmbed } from './infoEmbed'
@@ -38,6 +43,12 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
       console.log('Hanling error in --news')
       msg.reply('Coloca un subReddit valido para buscar')
     }
+  } else if (firstArg === '--random' || firstArg === '--r') {
+    const results = await getRandomPosts()
+    const randomId: number = getRandomNumber(results)
+    const data = results[randomId]?.data
+
+    msg.channel.send(data)
   } else if (firstArg === '--help' || firstArg?.startsWith('--') || firstArg === '--h') {
     const embed = infoEmbed(embedColor)
     msg.channel.send(embed)
