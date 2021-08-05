@@ -20,22 +20,23 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
     if (arg.length > 0) {
       const results = await getCustomSubRedditData(arg)
       const randomId: number = getRandomNumber(results)
-      const data = results[randomId].data
+      const data = results[randomId]?.data
       const embed = apiEmbed(data, embedColor)
 
       msg.channel.send(embed)
     } else {
-      console.log('Handle error in --sr')
+      msg.reply('Coloca un subReddit valido para buscar')
     }
   } else if (firstArg === '--n' || firstArg === '--news') {
     if (arg.length > 0) {
       const results = await getCustomSubRedditNews(arg)
       const randomId: number = getRandomNumber(results)
-      const data = results[randomId].data
+      const data = results[randomId]?.data
 
       msg.channel.send(data)
     } else {
       console.log('Hanling error in --news')
+      msg.reply('Coloca un subReddit valido para buscar')
     }
   } else if (firstArg === '--help' || firstArg?.startsWith('--') || firstArg === '--h') {
     const embed = infoEmbed(embedColor)
@@ -43,7 +44,7 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
   } else {
     const results = await getData()
     const randomId: number = getRandomNumber(results)
-    const data = results[randomId].data
+    const data = results[randomId]?.data
 
     const embed = apiEmbed(data, embedColor)
     msg.channel.send(embed)
