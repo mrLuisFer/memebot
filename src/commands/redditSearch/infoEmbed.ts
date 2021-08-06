@@ -14,6 +14,9 @@ export const infoEmbed = (embedColor: string): MessageEmbed => {
       \`--help\` -> Muestra informacion acerca del comando *(obvio)*
       \`--h\`
 
+      \`--random\` -> Devuelve un post random de un subReddit random
+      \`--r\`
+
       \`!reddit \` -> Asi solo muestra posts random de un subReddit por defecto
       `.trim()
     )

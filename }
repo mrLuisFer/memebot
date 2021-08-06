@@ -1,13 +1,13 @@
-import { Message } from 'discord.js'
+import {Message} from 'discord.js'
 import {
   getData,
   getCustomSubRedditData,
   getCustomSubRedditNews,
   getRandomPosts,
 } from './redditApiReq'
-import { getRandomEmbedColor } from '../../utils/embedColors'
-import { apiEmbed } from './apiEmbed'
-import { infoEmbed } from './infoEmbed'
+import {getRandomEmbedColor} from '../../utils/embedColors'
+import {apiEmbed} from './apiEmbed'
+import {infoEmbed} from './infoEmbed'
 
 function getRandomNumber(array: any[]): number {
   const n: number = Math.round(Math.random() * array.length)
@@ -19,7 +19,7 @@ type Props = {
   arg: string
   firstArg: string
 }
-export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
+export const getRandomMeme = async ({msg, arg, firstArg}: Props) => {
   const embedColor: string = getRandomEmbedColor()
   if (firstArg === '--sr') {
     if (arg.length > 0) {
