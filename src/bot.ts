@@ -8,6 +8,8 @@ export const client: Client = new Client()
 client.on('ready', () => {
   console.log(`Bot is ready as ${client?.user?.tag}!`)
   presence(client)
+  // handles the maximum available event or command listener
+  client.setMaxListeners(20)
 })
 
 client.on('message', (message: Message) => {

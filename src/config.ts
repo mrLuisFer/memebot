@@ -6,6 +6,6 @@ const botToken: string | undefined = process.env.BOT_TOKEN
 
 export const config = {
   token: botToken,
-  status: ['Reddit', 'Shiposts', 'Anime'],
-  prefix: '!',
+  status: ['Reddit', 'Shiposts', 'Anime', 'Discord', 'YouTube', 'Twitch', 'Netflix', 'Github'],
+  prefix: 'b!',
 }

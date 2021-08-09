@@ -5,13 +5,13 @@ export const helpCommand = (msg: Message): void => {
   const embedColor: string = getRandomEmbedColor()
 
   const embedDescription: string = `
-  **Lista de Comandos:**\n
-  
-  !reddit - Retorna um post aleatório do subreddit do usuário.\n
+  **Lista de Comandos:**
 
-  !anime - Busca el nombre de algun anime que coloques.\n
+  **!reddit** - Retorna um post aleatório do subreddit do usuário.
+
+  **!anime** - Busca el nombre de algun anime que coloques.
   
-  !npm - Retorna info de un package de npm que coloques.\n
+  **!npm** - Retorna info de un package de npm que coloques.
 
   **Sugerencia**: Utiliza el flag **--help** en cada uno de los comandos para ver una sublista de los comandos disponibles
   `.trim()
