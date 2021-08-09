@@ -16,7 +16,7 @@ export const helpCommand = (msg: Message): void => {
   **Sugerencia**: Utiliza el flag **--help** en cada uno de los comandos para ver una sublista de los comandos disponibles
   `.trim()
 
-  const clientAvatar: any = msg.author?.displayAvatarURL({ format: 'png' })
+  const clientAvatar: string = msg.author?.displayAvatarURL({ format: 'png' })
   const embed = new MessageEmbed()
     .setAuthor(`Comando pedido por ${msg.author.username}`, clientAvatar)
     .setTitle('Help Command')

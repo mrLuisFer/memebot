@@ -8,6 +8,7 @@ import {
 import { getRandomEmbedColor } from '../../utils/embedColors'
 import { apiEmbed } from './apiEmbed'
 import { infoEmbed } from './infoEmbed'
+import { sugEmbed } from './sugEmbed'
 
 function getRandomNumber(array: any[]): number {
   const n: number = Math.round(Math.random() * array.length)
@@ -49,6 +50,9 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
     const data = results[randomId].data
 
     const embed = apiEmbed(data, embedColor)
+    msg.channel.send(embed)
+  } else if (firstArg === '--sug') {
+    const embed = sugEmbed(msg, embedColor)
     msg.channel.send(embed)
   } else if (firstArg === '--help' || firstArg?.startsWith('--') || firstArg === '--h') {
     const embed = infoEmbed(embedColor)

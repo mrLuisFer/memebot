@@ -17,6 +17,8 @@ export const infoEmbed = (embedColor: string): MessageEmbed => {
       \`--random\` -> Devuelve un post random de un subReddit random
       \`--r\`
 
+      \`--sug\` -> Te muestra sugerencias de subreddits que puedes utilizar
+
       \`!reddit \` -> Asi solo muestra posts random de un subReddit por defecto
       `.trim()
     )
