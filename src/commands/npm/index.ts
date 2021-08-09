@@ -20,7 +20,7 @@ export const npm = async ({ msg, arg, firstArg }: Props) => {
     const response = await fetch(`https://api.npms.io/v2/package/${arg}`)
     const data = await response.json()
 
-    if (firstArg === '--help') {
+    if (firstArg === '--help' || firstArg === '--h') {
       const embed = infoEmbed(embedColor)
       msg.channel.send(embed)
     } else if (
@@ -35,6 +35,7 @@ export const npm = async ({ msg, arg, firstArg }: Props) => {
       msg.channel.send(errorEmbed(errorGif, embedColor))
     }
   } else {
-    msg.channel.send(errorEmbed(errorGif, embedColor))
+    const embed = infoEmbed(embedColor)
+    msg.channel.send(embed)
   }
 }
