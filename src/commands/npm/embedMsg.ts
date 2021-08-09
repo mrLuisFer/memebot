@@ -14,27 +14,37 @@ export const embedMsg = (data: any, embedColor: string): MessageEmbed => {
     )
     .addFields(
       {
-        name: 'Description:',
+        name: '📄 Description:',
         value: `${data.collected.metadata.description}`,
       },
       {
-        name: 'Version:',
+        name: '🌿 Version:',
         value: `${data.collected.metadata.version}`,
       },
       {
         name: '📜 License:',
         value: `${data.collected.metadata.license}`,
+      },
+      {
+        name: '🐙 Repositorio:',
+        value: `${data.collected.metadata.links.repository}`,
+      },
+      {
+        name: '🏠 Homepage:',
+        value: `${
+          data.collected.github?.homepage !== undefined
+            ? data.collected.github?.homepage
+            : data.collected.metadata.links?.homepage
+        }`,
+      },
+      {
+        name: '⭐ Github Stars:',
+        value: `${data.collected.github.starsCount}`,
       }
-    )
-    .setFooter(
-      `Link: ${
-        data.collected.github?.homepage !== undefined
-          ? data.collected.github?.homepage
-          : data.collected.metadata.links?.homepage
-      }`
     )
     .setColor(embedColor)
     .setThumbnail('https://media.giphy.com/media/gHnBLyeYE6hboT3t3o/giphy.gif')
+    .setFooter('Powered by NPM Api')
 
   return embed
 }

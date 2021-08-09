@@ -15,9 +15,10 @@ export const infoEmbed = (embedColor: string): MessageEmbed => {
   `
 
   const embed: MessageEmbed = new MessageEmbed()
-    .setTitle('Npm Command')
+    .setTitle('NPM Command')
     .setColor(embedColor)
     .setDescription(embedDescription)
+    .setImage('https://codigoonclick.com/wp-content/uploads/2019/05/npm-nodejs.jpeg')
 
   return embed
 }
