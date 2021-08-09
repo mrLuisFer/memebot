@@ -39,9 +39,9 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
       const randomId: number = getRandomNumber(results)
       const data = results[randomId]?.data
 
-      msg.channel.send(data)
+      const embed = apiEmbed(data, embedColor)
+      msg.channel.send(embed)
     } else {
-      console.log('Hanling error in --news')
       msg.reply('Coloca un subReddit valido para buscar')
     }
   } else if (firstArg === '--random' || firstArg === '--r') {

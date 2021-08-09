@@ -19,14 +19,13 @@ export const infoEmbed = (embedColor: string): MessageEmbed => {
 
       \`--sug\` -> Te muestra sugerencias de subreddits que puedes utilizar
 
+      \`--news <redditName>\` -> Muestra los posts mas nuevos del subreddit que coloques
+      \`--n\`
+
       \`!reddit \` -> Asi solo muestra posts random de un subReddit por defecto
       `.trim()
     )
-    .setFooter(
-      `
-               redditName: string 
-               `.trim()
-    )
+    .setFooter('redditName: string'.trim())
 
   return embed
 }

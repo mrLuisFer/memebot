@@ -23,9 +23,9 @@ client.on('message', (message: Message) => {
   const args: string[] = message.content.slice(config.prefix.length).trim().split(/ +/g)
   const command: string = args?.shift()?.toLowerCase() || ''
 
-  console.log(command)
-  console.log(`Client: ${client}`)
-  console.log(`Message: ${message}`)
+  console.log(`Comando -> ${command}`)
+  console.log(`Client -> ${client}`)
+  console.log(`Message -> ${message}`)
 
   init({ command, args, message })
 })
