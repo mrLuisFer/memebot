@@ -12,7 +12,7 @@ type Props = {
   firstArg: string
 }
 
-export const npm = async ({ msg, arg, firstArg }: Props) => {
+export const npm = async ({ msg, arg, firstArg }: Props): Promise<void> => {
   const errorGif: string = getRandomErrorGif()
   const embedColor: string = getRandomEmbedColor()
 

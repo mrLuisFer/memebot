@@ -1,7 +1,4 @@
-import { npm } from './npm'
-import { anime } from './animeSearch'
-import { getRandomMeme } from './redditSearch'
-import { helpCommand } from './helpCommand'
+import { compareCommand } from './compareCommands'
 import type { TMessageArgs } from '../types/MessageArgs'
 
 export const init = ({ message, command, args }: TMessageArgs): void => {
@@ -15,23 +12,5 @@ export const init = ({ message, command, args }: TMessageArgs): void => {
   console.log(`Args: ${args} \n`)
   console.log(`Arg: ${argsFiltered}`)
 
-  switch (command) {
-    case 'npm':
-      npm({ msg: message, arg: argsJoined, firstArg })
-      break
-    case 'ping':
-      console.log('Pong')
-      break
-    case 'anime':
-      anime({ msg: message, args, arg: argsFiltered, firstArg })
-      break
-    case 'reddit':
-    case 'r':
-      console.info('Reddit command')
-      getRandomMeme({ msg: message, arg: argsFiltered, firstArg })
-      break
-    case 'help':
-      helpCommand(message)
-      break
-  }
+  compareCommand({ message, command, argsJoined, firstArg, args, argsFiltered })
 }
