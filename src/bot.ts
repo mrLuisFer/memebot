@@ -3,7 +3,7 @@ import { config } from './config'
 import { presence } from './utils/botPresence'
 import { init } from './commands'
 
-const client: Client = new Client()
+export const client: Client = new Client()
 
 client.on('ready', () => {
   console.log(`Bot is ready as ${client?.user?.tag}!`)
@@ -22,6 +22,8 @@ client.on('message', (message: Message) => {
   const command: string = args?.shift()?.toLowerCase() || ''
 
   console.log(command)
+  console.log(`Client: ${client}`)
+  console.log(`Message: ${message}`)
 
   init({ command, args, message })
 })
