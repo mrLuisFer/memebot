@@ -3,6 +3,7 @@ import { npm } from './npm'
 import { anime } from './animeSearch'
 import { getRandomMeme } from './redditSearch'
 import { helpCommand } from './helpCommand'
+import { avatarCmd } from './avatarCmd'
 // In case one command needs the client
 // import {client} from '../bot'
 
@@ -40,6 +41,12 @@ export const compareCommand = ({
       break
     case 'help':
     case 'h':
+      helpCommand(message)
+      break
+    case 'avatar':
+      avatarCmd({ msg: message, args })
+      break
+    default:
       helpCommand(message)
       break
   }
