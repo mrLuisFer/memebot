@@ -3,8 +3,7 @@ import { MessageEmbed } from 'discord.js'
 export const apiEmbed = (data: any, embedColor: string): MessageEmbed => {
   let embed: MessageEmbed = new MessageEmbed().setTitle('Un error')
   try {
-    const urlOverriden: string = data.url_overridden_by_dest
-    const img = urlOverriden === undefined ? data.url : urlOverriden
+    const img: string = data.url !== null ? data.url : data.thumbnail
 
     const msgEmbed = new MessageEmbed()
       .setAuthor(data.subreddit_name_prefixed)

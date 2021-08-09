@@ -3,6 +3,8 @@ import { npm } from './npm'
 import { anime } from './animeSearch'
 import { getRandomMeme } from './redditSearch'
 import { helpCommand } from './helpCommand'
+// In case one command needs the client
+// import {client} from '../bot'
 
 type Props = {
   args: string[]
@@ -37,6 +39,7 @@ export const compareCommand = ({
       getRandomMeme({ msg: message, arg: argsFiltered, firstArg })
       break
     case 'help':
+    case 'h':
       helpCommand(message)
       break
   }
