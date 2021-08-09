@@ -1,6 +1,7 @@
 import { npm } from './npm'
 import { anime } from './animeSearch'
 import { getRandomMeme } from './redditSearch'
+import { helpCommand } from './helpCommand'
 import type { TMessageArgs } from '../types/MessageArgs'
 
 export const init = ({ message, command, args }: TMessageArgs): void => {
@@ -30,7 +31,7 @@ export const init = ({ message, command, args }: TMessageArgs): void => {
       getRandomMeme({ msg: message, arg: argsFiltered, firstArg })
       break
     case 'help':
-      console.log('Help command')
+      helpCommand(message)
       break
   }
 }

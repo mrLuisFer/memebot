@@ -15,9 +15,11 @@ type Props = {
 export const npm = async ({ msg, arg, firstArg }: Props) => {
   const errorGif: string = getRandomErrorGif()
   const embedColor: string = getRandomEmbedColor()
+
   if (arg.length > 0) {
     const response = await fetch(`https://api.npms.io/v2/package/${arg}`)
     const data = await response.json()
+
     if (firstArg === '--help') {
       const embed = infoEmbed(embedColor)
       msg.channel.send(embed)
