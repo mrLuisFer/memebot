@@ -1,9 +1,9 @@
-import { Message } from 'discord.js'
 import { npm } from './npm'
 import { anime } from './animeSearch'
 import { getRandomMeme } from './redditSearch'
+import type { TMessageArgs } from '../types/MessageArgs'
 
-export const init = (command: string, args: string[], message: Message): void => {
+export const init = ({ message, command, args }: TMessageArgs): void => {
   const argsJoined: string = args.join('-')
 
   const firstArg: string = args[0]
@@ -28,6 +28,9 @@ export const init = (command: string, args: string[], message: Message): void =>
     case 'r':
       console.info('Reddit command')
       getRandomMeme({ msg: message, arg: argsFiltered, firstArg })
+      break
+    case 'help':
+      console.log('Help command')
       break
   }
 }

@@ -23,7 +23,7 @@ client.on('message', (message: Message) => {
 
   console.log(command)
 
-  init(command, args, message)
+  init({ command, args, message })
 })
 
 client.login(config.token)
