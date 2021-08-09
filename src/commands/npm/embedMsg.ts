@@ -1,11 +1,10 @@
 import { MessageEmbed } from 'discord.js'
 
 export const embedMsg = (data: any, embedColor: string): MessageEmbed => {
+  const iconUrl: string =
+    'https://pbs.twimg.com/profile_images/1285630920263966721/Uk6O1QGC_400x400.jpg'
   const embed: MessageEmbed = new MessageEmbed()
-    .setAuthor(
-      'npm',
-      'https://pbs.twimg.com/profile_images/1285630920263966721/Uk6O1QGC_400x400.jpg'
-    )
+    .setAuthor('npm', iconUrl)
     .setTitle(`📦 Package: ${data.collected.metadata.name}`)
     .setURL(
       data.collected.github?.homepage !== undefined
@@ -44,7 +43,7 @@ export const embedMsg = (data: any, embedColor: string): MessageEmbed => {
     )
     .setColor(embedColor)
     .setThumbnail('https://media.giphy.com/media/gHnBLyeYE6hboT3t3o/giphy.gif')
-    .setFooter('Powered by NPM Api')
+    .setFooter('Powered by NPM Api', iconUrl)
 
   return embed
 }

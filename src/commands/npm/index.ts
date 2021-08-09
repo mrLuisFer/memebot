@@ -17,7 +17,7 @@ export const npm = async ({ msg, arg, firstArg }: Props): Promise<void> => {
   const embedColor: string = getRandomEmbedColor()
 
   if (arg.length > 0) {
-    const response = await fetch(`https://api.npms.io/v2/package/${arg}`)
+    const response = await fetch(`https://api.npms.io/v2/package/${arg.toLocaleLowerCase()}`)
     const data = await response.json()
 
     if (firstArg === '--help' || firstArg === '--h') {
