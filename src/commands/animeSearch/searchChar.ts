@@ -1,7 +1,7 @@
 import { Message, MessageEmbed } from 'discord.js'
 import fetch from 'node-fetch'
 import { baseUrl } from './index'
-import { getRandomErrorGif } from '../../utils/gifs/errorGifs'
+import { getRandomErrorGif } from '../../gifs/errorGifs'
 
 export const searchChar = async (msg: Message, arg: string, embedColor: string) => {
   const url: string = `${baseUrl}/search/people?q=${arg}&limit=1`

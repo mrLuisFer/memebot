@@ -1,7 +1,7 @@
 import { Message } from 'discord.js'
 import fetch from 'node-fetch'
 import { errorEmbed } from './errorEmbed'
-import { getRandomErrorGif } from '../../utils/gifs/errorGifs'
+import { getRandomErrorGif } from '../../gifs/errorGifs'
 import { embedMsg } from './embedMsg'
 import { infoEmbed } from './infoEmbed'
 import { getRandomEmbedColor } from '../../utils/embedColors'
