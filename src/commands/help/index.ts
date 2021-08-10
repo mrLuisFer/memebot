@@ -20,7 +20,7 @@ export const helpCommand = (msg: Message): void => {
 
   **${config.prefix}repo** - Muestra la URL del repositorio del Bot.
 
-  **Sugerencia**: Utiliza el flag **--help** en cada uno de los comandos para ver una sublista de los comandos disponibles
+  **Sugerencia**: Utiliza el flag **--help** en cada uno de los comandos para ver una lista de opciones que puedes utilizar.
   `.trim()
 
   const clientAvatar: string = msg.author?.displayAvatarURL({ format: 'png' })

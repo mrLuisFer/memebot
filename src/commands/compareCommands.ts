@@ -5,6 +5,7 @@ import { getRandomMeme } from './redditSearch'
 import { helpCommand } from './help'
 import { avatarCmd } from './avatarCmd'
 import { repo } from './repository'
+import { userInfo } from './userInfo'
 // In case one command needs the client
 // import {client} from '../bot'
 
@@ -49,6 +50,9 @@ export const compareCommand = ({
       break
     case 'repo':
       repo(message)
+      break
+    case 'user':
+      userInfo(message)
       break
     default:
       helpCommand(message)
