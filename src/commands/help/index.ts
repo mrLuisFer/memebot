@@ -20,6 +20,10 @@ export const helpCommand = (msg: Message): void => {
 
   **${config.prefix}repo** - Muestra la URL del repositorio del Bot.
 
+  **${config.prefix}ping** - Retorna el tiempo que tarda el Bot en responder.
+
+  **${config.prefix}user** - Retorna informacion acerca del primer usuario que menciones.
+
   **Sugerencia**: Utiliza el flag **--help** en cada uno de los comandos para ver una lista de opciones que puedes utilizar.
   `.trim()
 

@@ -1,4 +1,5 @@
 import { Message, MessageEmbed } from 'discord.js'
+import { config } from '../../config'
 import { getRandomEmbedColor } from '../../utils/embedColors'
 
 export const userInfo = async (msg: Message) => {
@@ -7,24 +8,33 @@ export const userInfo = async (msg: Message) => {
   const embedColor: string = getRandomEmbedColor()
 
   if (user !== undefined && user !== null) {
+    const timeStamp = user?.createdTimestamp
+    const dateObject = new Date(timeStamp)
+
+    const dateFormat = dateObject.toLocaleString()
+
     const embed = new MessageEmbed()
-      .setTitle(`${user?.username} info`)
+      .setTitle(`📒 ${user?.username} info`)
       .setAuthor(user?.tag, `${user?.displayAvatarURL()}`)
       .setColor(embedColor)
       .setDescription(
         `
-      User: ${await user?.fetch()}
+        \n
+      🥐 User: **${await user?.fetch()}**
       
-      ID: ${user?.id}
+      ⚡ ID: **${user?.id}**
 
-      Discriminator: #${user?.discriminator}
+      📜 Discriminator: **#${user?.discriminator}**
 
-      Bot? ${user?.bot ? 'Yes' : 'No'}
+      🤖 Es un Bot?: **${user?.bot ? 'Yes' : 'No'}**
 
-      `
+      🌛 Created: **${dateFormat}**
+
+      Si quieres ver el avatar completo utilizar el comando:
+      **${config.prefix}avatar**
+      `.trim()
       )
-      .setThumbnail(user?.displayAvatarURL())
-      .setFooter(`Created: ${user?.createdAt}`, `${user?.displayAvatarURL()}`)
+      .setThumbnail(`${user?.displayAvatarURL()}`)
     msg.channel.send(embed)
   } else {
     msg.channel.send('Por favor menciona a un usuario')
