@@ -1,28 +1,27 @@
-import { Message, MessageEmbed } from 'discord.js'
+import { Message } from 'discord.js'
 import { getRandomEmbedColor } from '../../utils/embedColors'
+import { avatarEmbed } from './avatarEmbed'
 
 type Props = {
   msg: Message
-  args: string[]
+  firstArg: string
 }
 
-export const avatarCmd = ({ msg, args }: Props) => {
+export const avatarCmd = ({ msg, firstArg }: Props) => {
   const embedColor: string = getRandomEmbedColor()
+  console.log(firstArg)
 
-  if (args[0].length > 1) {
+  if (firstArg?.length > 1) {
     const user = msg.mentions.users.first()
-    const authorEmbed: MessageEmbed = new MessageEmbed()
-      .setTitle(`Avatar de ${user}`)
-      .setColor(embedColor)
-
-    return msg.channel.send(authorEmbed)
+    if (user !== undefined) {
+      const embed = avatarEmbed({ embedColor, user })
+      msg.channel.send(embed)
+    } else {
+      msg.reply('Usuario no encontrado')
+    }
   } else {
-    const clientAvatar: string = msg.author?.displayAvatarURL({ format: 'png' })
-    const authorEmbed: MessageEmbed = new MessageEmbed()
-      .setTitle(`Avatar de ${msg.author.username}`)
-      .setColor(embedColor)
-      .setImage(clientAvatar)
-
-    return msg.channel.send(authorEmbed)
+    const msgAuthor = msg.author
+    const embed = avatarEmbed({ embedColor, user: msgAuthor })
+    msg.channel.send(embed)
   }
 }

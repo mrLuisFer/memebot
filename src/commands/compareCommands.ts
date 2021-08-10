@@ -44,7 +44,7 @@ export const compareCommand = ({
       helpCommand(message)
       break
     case 'avatar':
-      avatarCmd({ msg: message, args })
+      avatarCmd({ msg: message, firstArg })
       break
     default:
       helpCommand(message)
