@@ -7,11 +7,15 @@ export const helpCommand = (msg: Message): void => {
   const embedDescription: string = `
   **Lista de Comandos:**
 
+  **!help** - Retorna esta lista de comandos.
+
   **!reddit** - Retorna um post aleatório do subreddit do usuário.
 
   **!anime** - Busca el nombre de algun anime que coloques.
   
   **!npm** - Retorna info de un package de npm que coloques.
+
+  **!avatar** - Retorna tu avatar o el de algun usuario.
 
   **Sugerencia**: Utiliza el flag **--help** en cada uno de los comandos para ver una sublista de los comandos disponibles
   `.trim()

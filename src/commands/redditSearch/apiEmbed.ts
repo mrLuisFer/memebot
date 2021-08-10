@@ -19,7 +19,6 @@ export const apiEmbed = (data: any, embedColor: string): MessageEmbed => {
         .addFields([
           { name: '**🐧 Author:**', value: data?.author_fullname, inline: true },
           { name: '**📎 Url**', value: data?.url, inline: true },
-          { name: '.', value: '.' },
           { name: '**👍 Likes:**', value: data?.ups, inline: true },
           { name: '**💬 Comments:**', value: data?.num_comments, inline: true },
         ])

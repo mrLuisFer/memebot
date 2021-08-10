@@ -11,9 +11,9 @@ export const infoEmbed = (embedColor: string): MessageEmbed => {
       `
   Puedes ejecutar el comando de las siguientes maneras:
 
-  \`b!avatar\` -> Retorna tu propio avatar
+  \`b!avatar\` - Retorna tu propio avatar
 
-  \`b!avatar <username>\` -> Retorna el avatar del usuario que coloques
+  \`b!avatar <username>\` - Retorna el avatar del usuario que coloques
 `.trim()
     )
     .setImage(randomAnimeGif)

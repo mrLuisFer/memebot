@@ -8,13 +8,13 @@ const infoEmbed = (color: string, randomAnimeGif: string) => {
       `
     Puedes seguir alguno de estas flags:
 
-    \`!anime <name>\` -> Busca el nombre de un anime
+    \`!anime <name>\` - Busca el nombre de un anime
 
-    \`!anime --manga <name>\` -> Para buscar algun manga
+    \`!anime --manga <name>\` - Para buscar algun manga
     \`!anime --m <name>\`
 
     
-    \`!anime --people <name>\` -> Para buscar algun personaje
+    \`!anime --people <name>\` - Para buscar algun personaje
     \`!anime --p <name>\`
 
     📝 Example:

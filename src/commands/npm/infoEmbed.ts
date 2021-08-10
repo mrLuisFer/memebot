@@ -8,10 +8,10 @@ export const infoEmbed = (embedColor: string): MessageEmbed => {
   \`!npm react\`
 
   Si colocas espacios automaticamente se separaran por **-**
-  \`!npm react redux\` -> \`react-redux\`
+  \`!npm react redux\`  \`react-redux\`
 
 
-  \`--help\` -> Muestra ayuda acerca del comando npm
+  \`--help\` - Muestra ayuda acerca del comando npm
   `
 
   const embed: MessageEmbed = new MessageEmbed()
