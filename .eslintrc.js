@@ -14,5 +14,6 @@ module.exports = {
   rules: {
     quotes: ['warn', 'single'],
     eqeqeq: 'error',
+    semi: 'error',
   },
 }
