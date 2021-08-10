@@ -1,17 +1,18 @@
 import { MessageEmbed } from 'discord.js'
+import { config } from '../../config'
 
 export const infoEmbed = (embedColor: string): MessageEmbed => {
   const embedDescription: string = `
   Para buscar un paquete de npm solo coloca el nombre del paquete despues del comando
   
   **Ejemplo:**
-  \`!npm react\`
+  \`${config.prefix}npm react\`
 
   Si colocas espacios automaticamente se separaran por **-**
-  \`!npm react redux\`  \`react-redux\`
+  \`${config.prefix}npm react redux\`  \`react-redux\`
 
 
-  \`--help\` - Muestra ayuda acerca del comando npm
+  \`${config.prefix} --help\` - Muestra ayuda acerca del comando npm
   `
 
   const embed: MessageEmbed = new MessageEmbed()

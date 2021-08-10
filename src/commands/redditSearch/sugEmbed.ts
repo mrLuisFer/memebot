@@ -1,6 +1,7 @@
 import { Message, MessageEmbed } from 'discord.js'
 import { subredditList } from '../../utils/subredditList'
 import { getRandomGif } from '../../gifs/animeGifs'
+import { config } from '../../config'
 
 export const sugEmbed = (msg: Message, embedColor: string): MessageEmbed => {
   const subReddits = subredditList.map((subreddit: string) => {
@@ -22,7 +23,7 @@ export const sugEmbed = (msg: Message, embedColor: string): MessageEmbed => {
   **${subReddits} **
 
   Puedes usar:
-  **\`reddit --sr <name>\n\`**
+  **\`${config.prefix}reddit --sr <name>\n\`**
   `.trim()
     )
     .setFooter('name: string')

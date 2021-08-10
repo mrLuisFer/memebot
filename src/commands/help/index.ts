@@ -1,4 +1,5 @@
 import { Message, MessageEmbed } from 'discord.js'
+import { config } from '../../config'
 import { getRandomEmbedColor } from '../../utils/embedColors'
 
 export const helpCommand = (msg: Message): void => {
@@ -7,15 +8,17 @@ export const helpCommand = (msg: Message): void => {
   const embedDescription: string = `
   **Lista de Comandos:**
 
-  **!help** - Retorna esta lista de comandos.
+  **${config.prefix}help** - Retorna esta lista de comandos.
 
-  **!reddit** - Retorna um post aleatório do subreddit do usuário.
+  **${config.prefix}reddit** - Retorna um post aleatório do subreddit do usuário.
 
-  **!anime** - Busca el nombre de algun anime que coloques.
+  **${config.prefix}anime** - Busca el nombre de algun anime que coloques.
   
-  **!npm** - Retorna info de un package de npm que coloques.
+  **${config.prefix}npm** - Retorna info de un package de npm que coloques.
 
-  **!avatar** - Retorna tu avatar o el de algun usuario.
+  **${config.prefix}avatar** - Retorna tu avatar o el de algun usuario.
+
+  **${config.prefix}repo** - Muestra la URL del repositorio del Bot.
 
   **Sugerencia**: Utiliza el flag **--help** en cada uno de los comandos para ver una sublista de los comandos disponibles
   `.trim()

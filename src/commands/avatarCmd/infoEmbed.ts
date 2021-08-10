@@ -1,4 +1,5 @@
 import { MessageEmbed } from 'discord.js'
+import { config } from '../../config'
 import { getRandomGif } from '../../gifs/animeGifs'
 
 export const infoEmbed = (embedColor: string): MessageEmbed => {
@@ -11,9 +12,9 @@ export const infoEmbed = (embedColor: string): MessageEmbed => {
       `
   Puedes ejecutar el comando de las siguientes maneras:
 
-  \`b!avatar\` - Retorna tu propio avatar
+  \`${config.prefix}avatar\` - Retorna tu propio avatar
 
-  \`b!avatar <username>\` - Retorna el avatar del usuario que coloques
+  \`${config.prefix}avatar <username>\` - Retorna el avatar del usuario que coloques
 `.trim()
     )
     .setImage(randomAnimeGif)

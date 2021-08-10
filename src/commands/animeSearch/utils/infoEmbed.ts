@@ -1,4 +1,5 @@
 import { MessageEmbed } from 'discord.js'
+import { config } from '../../../config'
 
 const infoEmbed = (color: string, randomAnimeGif: string) => {
   const embed: MessageEmbed = new MessageEmbed()
@@ -8,17 +9,17 @@ const infoEmbed = (color: string, randomAnimeGif: string) => {
       `
     Puedes seguir alguno de estas flags:
 
-    \`!anime <name>\` - Busca el nombre de un anime
+    \`${config.prefix}anime <name>\` - Busca el nombre de un anime
 
-    \`!anime --manga <name>\` - Para buscar algun manga
-    \`!anime --m <name>\`
+    \`${config.prefix}anime --manga <name>\` - Para buscar algun manga
+    \`${config.prefix}anime --m <name>\`
 
     
-    \`!anime --people <name>\` - Para buscar algun personaje
-    \`!anime --p <name>\`
+    \`${config.prefix}anime --people <name>\` - Para buscar algun personaje
+    \`${config.prefix}anime --p <name>\`
 
     📝 Example:
-    \`!anime naruto\`
+    \`${config.prefix}anime naruto\`
     `.trim()
     )
     .setImage(randomAnimeGif)

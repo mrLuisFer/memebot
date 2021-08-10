@@ -38,7 +38,7 @@ export const embedMsg = (data: any, embedColor: string): MessageEmbed => {
       },
       {
         name: '⭐ Github Stars:',
-        value: `${data.collected.github.starsCount}`,
+        value: `${data.collected.github?.starsCount}`,
       }
     )
     .setColor(embedColor)

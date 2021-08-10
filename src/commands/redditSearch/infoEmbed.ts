@@ -1,4 +1,5 @@
 import { MessageEmbed } from 'discord.js'
+import { config } from '../../config'
 
 export const infoEmbed = (embedColor: string): MessageEmbed => {
   const embed: MessageEmbed = new MessageEmbed()
@@ -9,20 +10,20 @@ export const infoEmbed = (embedColor: string): MessageEmbed => {
   Puedes ejecutar el comando \`!reddit \`
       con alguna de las siguientes flags:
 
-      \`--sr <redditName>\`  Devuelve post random del subReddit que coloques      
+      \`${config.prefix}reddit --sr <redditName>\`  Devuelve post random del subReddit que coloques      
       
-      \`--help\` - Muestra informacion acerca del comando *(obvio)*
+      \`${config.prefix}reddit --help\` - Muestra informacion acerca del comando *(obvio)*
       \`--h\`
 
-      \`--random\` - Devuelve un post random de un subReddit random
+      \`${config.prefix}reddit --random\` - Devuelve un post random de un subReddit random
       \`--r\`
 
-      \`--sug\` - Te muestra sugerencias de subreddits que puedes utilizar
+      \`${config.prefix}reddit --sug\` - Te muestra sugerencias de subreddits que puedes utilizar
 
-      \`--news <redditName>\` - Muestra los posts mas nuevos del subreddit que coloques
+      \`${config.prefix}reddit --news <redditName>\` - Muestra los posts mas nuevos del subreddit que coloques
       \`--n\`
 
-      \`!reddit \` - Asi solo muestra posts random de un subReddit por defecto
+      \`${config.prefix}reddit \` - Asi solo muestra posts random de un subReddit por defecto
       `.trim()
     )
     .setFooter('redditName: string'.trim())

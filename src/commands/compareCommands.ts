@@ -2,8 +2,9 @@ import { Message } from 'discord.js'
 import { npm } from './npm'
 import { anime } from './animeSearch'
 import { getRandomMeme } from './redditSearch'
-import { helpCommand } from './helpCommand'
+import { helpCommand } from './help'
 import { avatarCmd } from './avatarCmd'
+import { repo } from './repository'
 // In case one command needs the client
 // import {client} from '../bot'
 
@@ -45,6 +46,9 @@ export const compareCommand = ({
       break
     case 'avatar':
       avatarCmd({ msg: message, firstArg })
+      break
+    case 'repo':
+      repo(message)
       break
     default:
       helpCommand(message)
