@@ -1,42 +1,28 @@
-import { Message, MessageEmbed } from 'discord.js'
-import { config } from '../../config'
+import { Message } from 'discord.js'
 import { getRandomEmbedColor } from '../../utils/embedColors'
+import { userEmbed } from './userEmbed'
 
-export const userInfo = async (msg: Message) => {
-  const user = msg.mentions.users.first()
-  console.log(user)
-  const embedColor: string = getRandomEmbedColor()
+type Props = {
+  msg: Message
+  firstArg: string
+}
 
-  if (user !== undefined && user !== null) {
-    const timeStamp = user?.createdTimestamp
-    const dateObject = new Date(timeStamp)
-
-    const dateFormat = dateObject.toLocaleString()
-
-    const embed = new MessageEmbed()
-      .setTitle(`📒 ${user?.username} info`)
-      .setAuthor(user?.tag, `${user?.displayAvatarURL()}`)
-      .setColor(embedColor)
-      .setDescription(
-        `
-        \n
-      🥐 User: **${await user?.fetch()}**
-      
-      ⚡ ID: **${user?.id}**
-
-      📜 Discriminator: **#${user?.discriminator}**
-
-      🤖 Es un Bot?: **${user?.bot ? 'Yes' : 'No'}**
-
-      🌛 Created: **${dateFormat}**
-
-      Si quieres ver el avatar completo utilizar el comando:
-      **${config.prefix}avatar**
-      `.trim()
-      )
-      .setThumbnail(`${user?.displayAvatarURL()}`)
-    msg.channel.send(embed)
+export const userInfo = async ({ msg, firstArg }: Props) => {
+  console.log(firstArg)
+  if (firstArg === '--help' || firstArg.startsWith('--')) {
+    return msg.channel.send('Help')
   } else {
-    msg.channel.send('Por favor menciona a un usuario')
+    const user = msg.mentions.users.first()
+    console.log(user)
+    const embedColor: string = getRandomEmbedColor()
+
+    msg.channel.send('Help?')
+    if (user !== undefined && user !== null) {
+      const embed = await userEmbed(user, embedColor)
+
+      msg.channel.send(embed)
+    } else {
+      msg.channel.send('Por favor menciona a un usuario')
+    }
   }
 }

@@ -52,7 +52,7 @@ export const compareCommand = ({
       repo(message)
       break
     case 'user':
-      userInfo(message)
+      userInfo({ msg: message, firstArg })
       break
     default:
       helpCommand(message)
