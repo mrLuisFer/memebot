@@ -6,6 +6,7 @@ import { helpCommand } from './help'
 import { avatarCmd } from './avatarCmd'
 import { repo } from './repository'
 import { userInfo } from './userInfo'
+import { pokemon } from './pokemon'
 // In case one command needs the client
 // import {client} from '../bot'
 
@@ -53,6 +54,9 @@ export const compareCommand = ({
       break
     case 'user':
       userInfo({ msg: message, firstArg })
+      break
+    case 'pokemon':
+      pokemon({ msg: message, argsFiltered })
       break
     default:
       helpCommand(message)
