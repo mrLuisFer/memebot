@@ -2,14 +2,23 @@ import { Message } from 'discord.js'
 import fetch from 'node-fetch'
 import { getRandomEmbedColor } from '../../utils/embedColors'
 import { resultEmbed } from './resultEmbed'
+import { infoEmbed } from './infoEmbed'
 
 type Props = {
   msg: Message
   argsFiltered: string
+  firstArg: string
 }
 
-export const pokemon = async ({ msg, argsFiltered }: Props) => {
+export const pokemon = async ({ msg, argsFiltered, firstArg }: Props) => {
   const embedColor: string = getRandomEmbedColor()
+
+  console.log(`${argsFiltered}`)
+
+  if (firstArg === '--help' || firstArg.startsWith('--')) {
+    return msg.channel.send(infoEmbed(embedColor))
+  }
+
   if (argsFiltered?.length > 1) {
     const baseApiUrl = `https://pokeapi.co/api/v2/pokemon/${argsFiltered}`
 

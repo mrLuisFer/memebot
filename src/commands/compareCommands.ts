@@ -56,7 +56,7 @@ export const compareCommand = ({
       userInfo({ msg: message, firstArg })
       break
     case 'pokemon':
-      pokemon({ msg: message, argsFiltered })
+      pokemon({ msg: message, argsFiltered, firstArg })
       break
     default:
       helpCommand(message)

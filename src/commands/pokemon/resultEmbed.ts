@@ -30,7 +30,7 @@ export const resultEmbed = (data: any, embedColor: string, msg: Message): Messag
   const embed = new MessageEmbed()
     .setTitle(`Pokemon - ${data.name}`)
     .setColor(embedColor)
-    .setThumbnail(data.sprites.front_default)
+    .setThumbnail(data?.sprites?.front_default)
     .setAuthor(msg.author.username, `${msg.author.displayAvatarURL()}`)
     .setURL(`https://pokeapi.co/api/v2/pokemon/${data.name}`)
     .addFields(fields)
