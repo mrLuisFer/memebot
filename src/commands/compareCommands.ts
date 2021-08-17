@@ -1,14 +1,8 @@
 import { Message } from 'discord.js'
-import { npm } from './npm'
-import { anime } from './animeSearch'
-import { getRandomMeme } from './redditSearch'
-import { helpCommand } from './help'
-import { avatarCmd } from './avatarCmd'
-import { repo } from './repository'
-import { userInfo } from './userInfo'
-import { pokemon } from './pokemon'
 // In case one command needs the client
 // import {client} from '../bot'
+import { getRandomMeme, anime, npm, pokemon } from './funCommands'
+import { avatarCmd, helpCommand, repo, userInfo } from './utilsCommands'
 
 type Props = {
   args: string[]
@@ -57,6 +51,10 @@ export const compareCommand = ({
       break
     case 'pokemon':
       pokemon({ msg: message, argsFiltered, firstArg })
+      break
+    case 'welcome':
+    case 'w':
+      console.log('Welcome')
       break
     default:
       helpCommand(message)

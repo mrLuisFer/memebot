@@ -1,7 +1,7 @@
 import { Message, MessageEmbed } from 'discord.js'
-import { subredditList } from '../../utils/subredditList'
-import { getRandomGif } from '../../gifs/animeGifs'
-import { config } from '../../config'
+import { subredditList } from '../../../utils/subredditList'
+import { getRandomGif } from '../../../gifs/animeGifs'
+import { config } from '../../../config'
 
 export const sugEmbed = (msg: Message, embedColor: string): MessageEmbed => {
   const subReddits = subredditList.map((subreddit: string) => {

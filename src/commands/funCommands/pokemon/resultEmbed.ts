@@ -34,6 +34,7 @@ export const resultEmbed = (data: any, embedColor: string, msg: Message): Messag
     .setAuthor(msg.author.username, `${msg.author.displayAvatarURL()}`)
     .setURL(`https://pokeapi.co/api/v2/pokemon/${data.name}`)
     .addFields(fields)
+    .setFooter('Powered by PokeAPI', `${data?.sprites?.front_female}`)
 
   return embed
 }

@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js'
-import { getRandomEmbedColor } from '../../utils/embedColors'
-import { client } from '../../bot'
+import { getRandomEmbedColor } from '../../../utils/embedColors'
+import { client } from '../../../bot'
 
 export const repo = (msg: Message) => {
   const embedColor: string = getRandomEmbedColor()

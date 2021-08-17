@@ -5,7 +5,7 @@ import {
   getCustomSubRedditNews,
   getRandomPosts,
 } from './redditApiReq'
-import { getRandomEmbedColor } from '../../utils/embedColors'
+import { getRandomEmbedColor } from '../../../utils/embedColors'
 import { apiEmbed } from './apiEmbed'
 import { infoEmbed } from './infoEmbed'
 import { sugEmbed } from './sugEmbed'

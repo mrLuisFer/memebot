@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js'
-import { config } from '../../config'
-import { getRandomEmbedColor } from '../../utils/embedColors'
+import { config } from '../../../config'
+import { getRandomEmbedColor } from '../../../utils/embedColors'
 
 export const helpCommand = (msg: Message): void => {
   const embedColor: string = getRandomEmbedColor()
@@ -23,6 +23,8 @@ export const helpCommand = (msg: Message): void => {
   **${config.prefix}ping** - Retorna el tiempo que tarda el Bot en responder.
 
   **${config.prefix}user** - Retorna informacion acerca del primer usuario que menciones.
+
+  **${config.prefix}pokemon** - Busca un pokemon y devuelve su informacion
 
   **Sugerencia**: Utiliza el flag **--help** en cada uno de los comandos para ver una lista de opciones que puedes utilizar.
   `.trim()

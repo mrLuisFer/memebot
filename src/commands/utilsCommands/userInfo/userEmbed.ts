@@ -1,5 +1,5 @@
 import { MessageEmbed, User } from 'discord.js'
-import { config } from '../../config'
+import { config } from '../../../config'
 
 export const userEmbed = async (user: User, embedColor: string): Promise<MessageEmbed> => {
   const timeStamp = user?.createdTimestamp

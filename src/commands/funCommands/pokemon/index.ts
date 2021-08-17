@@ -1,6 +1,6 @@
 import { Message } from 'discord.js'
 import fetch from 'node-fetch'
-import { getRandomEmbedColor } from '../../utils/embedColors'
+import { getRandomEmbedColor } from '../../../utils/embedColors'
 import { resultEmbed } from './resultEmbed'
 import { infoEmbed } from './infoEmbed'
 
@@ -15,7 +15,7 @@ export const pokemon = async ({ msg, argsFiltered, firstArg }: Props) => {
 
   console.log(`${argsFiltered}`)
 
-  if (firstArg === '--help' || firstArg.startsWith('--')) {
+  if (firstArg === '--help' || firstArg?.startsWith('--')) {
     return msg.channel.send(infoEmbed(embedColor))
   }
 
@@ -25,11 +25,11 @@ export const pokemon = async ({ msg, argsFiltered, firstArg }: Props) => {
     const res = await fetch(baseApiUrl)
     console.log(res)
     if (res.status !== 200) {
-      msg.reply('Pokemon no encontrado')
+      return msg.reply('Pokemon no encontrado')
     } else {
       const data = await res.json()
       if (data !== undefined) {
-        msg.channel.send(resultEmbed(data, embedColor, msg))
+        return msg.channel.send(resultEmbed(data, embedColor, msg))
       }
     }
   } else {

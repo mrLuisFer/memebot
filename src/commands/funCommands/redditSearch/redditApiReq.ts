@@ -1,5 +1,5 @@
 import fetch from 'node-fetch'
-import { getRandomSubreddit } from '../../utils/subredditList'
+import { getRandomSubreddit } from '../../../utils/subredditList'
 
 export const getData = async (): Promise<any> => {
   const url = 'https://www.reddit.com/r/memes/top.json'

@@ -1,5 +1,5 @@
 import { MessageEmbed } from 'discord.js'
-import { config } from '../../../config'
+import { config } from '../../../../config'
 
 const infoEmbed = (color: string, randomAnimeGif: string) => {
   const embed: MessageEmbed = new MessageEmbed()

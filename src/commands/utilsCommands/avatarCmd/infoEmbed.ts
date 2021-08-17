@@ -1,6 +1,6 @@
 import { MessageEmbed } from 'discord.js'
-import { config } from '../../config'
-import { getRandomGif } from '../../gifs/animeGifs'
+import { config } from '../../../config'
+import { getRandomGif } from '../../../gifs/animeGifs'
 
 export const infoEmbed = (embedColor: string): MessageEmbed => {
   const randomAnimeGif: string = getRandomGif()

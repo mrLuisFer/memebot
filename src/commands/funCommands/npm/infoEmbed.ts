@@ -1,5 +1,5 @@
 import { MessageEmbed } from 'discord.js'
-import { config } from '../../config'
+import { config } from '../../../config'
 
 export const infoEmbed = (embedColor: string): MessageEmbed => {
   const embedDescription: string = `

@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import { getRandomEmbedColor } from '../../utils/embedColors'
+import { getRandomEmbedColor } from '../../../utils/embedColors'
 import { userEmbed } from './userEmbed'
 import { infoEmbed } from './infoEmbed'
 

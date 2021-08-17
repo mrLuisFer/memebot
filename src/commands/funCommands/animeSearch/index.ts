@@ -1,10 +1,10 @@
-import { getRandomEmbedColor } from '../../utils/embedColors'
+import { getRandomEmbedColor } from '../../../utils/embedColors'
 import { searchAnime } from './searchAnime'
 import { searchManga } from './searchManga'
 import { searchChar } from './searchChar'
 import infoEmbed from './utils/infoEmbed'
 import { Message } from 'discord.js'
-import { getRandomGif } from '../../gifs/animeGifs'
+import { getRandomGif } from '../../../gifs/animeGifs'
 
 export const baseUrl: string = 'https://api.jikan.moe/v3'
 
