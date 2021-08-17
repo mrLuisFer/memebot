@@ -2,7 +2,7 @@ import { Message } from 'discord.js'
 // In case one command needs the client
 // import {client} from '../bot'
 import { getRandomMeme, anime, npm, pokemon } from './funCommands'
-import { avatarCmd, helpCommand, repo, userInfo } from './utilsCommands'
+import { avatarCmd, helpCommand, repo, userInfo, welcome } from './utilsCommands'
 
 type Props = {
   args: string[]
@@ -54,7 +54,7 @@ export const compareCommand = ({
       break
     case 'welcome':
     case 'w':
-      console.log('Welcome')
+      welcome({ msg: message, firstArg })
       break
     default:
       helpCommand(message)

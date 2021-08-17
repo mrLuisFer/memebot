@@ -30,4 +30,8 @@ client.on('message', (message: Message) => {
   init({ command, args, message })
 })
 
+client.on('guildMemberAdd', (member) => {
+  console.log(`New member: ${member.user}`)
+})
+
 client.login(config.token)
