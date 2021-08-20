@@ -2,7 +2,7 @@ import { Message } from 'discord.js'
 // In case one command needs the client
 // import {client} from '../bot'
 import { getRandomMeme, anime, npm, pokemon } from './funCommands'
-import { avatarCmd, helpCommand, repo, userInfo, welcome } from './utilsCommands'
+import { avatarCmd, helpCommand, repo, userInfo, welcome } from './serverCommands'
 
 type Props = {
   args: string[]
