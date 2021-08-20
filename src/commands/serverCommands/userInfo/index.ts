@@ -9,10 +9,9 @@ type Props = {
 }
 
 export const userInfo = async ({ msg, firstArg }: Props) => {
-  console.log(firstArg)
   const embedColor: string = getRandomEmbedColor()
   const user = msg?.mentions?.users.first()
-  if (firstArg === '--help' || firstArg === '--h' || firstArg.startsWith('--')) {
+  if (firstArg === '--help' || firstArg === '--h' || firstArg?.startsWith('--')) {
     msg.channel.send(infoEmbed(embedColor))
   } else if (user !== undefined && user !== null) {
     const embed = await userEmbed(user, embedColor)
