@@ -3,9 +3,7 @@ import { config } from '../../../config'
 
 export const userEmbed = async (user: User, embedColor: string): Promise<MessageEmbed> => {
   const timeStamp = user?.createdTimestamp
-  const dateObject = new Date(timeStamp)
-
-  const dateFormat = dateObject.toLocaleString()
+  const dateFormat = new Date(timeStamp).toDateString()
 
   const embed = new MessageEmbed()
     .setTitle(`📒 ${user?.username} info`)

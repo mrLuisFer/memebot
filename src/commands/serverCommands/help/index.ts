@@ -26,6 +26,8 @@ export const helpCommand = (msg: Message): void => {
 
   **${config.prefix}pokemon** - Busca un pokemon y devuelve su informacion
 
+  **${config.prefix}welcome** - Envia un mensaje de bienvenida al user nuevo
+
   **Sugerencia**: Utiliza el flag **--help** en cada uno de los comandos para ver una lista de opciones que puedes utilizar.
   `.trim()
 
