@@ -1,4 +1,5 @@
-import { Message, MessageEmbed, PartialMessage } from 'discord.js'
+import { Message, MessageEmbed, PartialMessage, User } from 'discord.js'
+import { getRandomEmbedColor } from '../../utils/embedColors'
 
 type Props = {
   message: Message | PartialMessage
@@ -6,8 +7,31 @@ type Props = {
 
 export const onMessageDelete = ({ message }: Props) => {
   console.log(message)
+  const embedColor: string = getRandomEmbedColor()
 
-  const embed = new MessageEmbed().setTitle('Un mensaje ha sido eliminado!')
+  const msgAuthor: User = message?.author!
 
-  message.channel.send(embed)
+  if (message !== undefined && message !== null) {
+    const embed: MessageEmbed = new MessageEmbed()
+      .setTitle('Un mensaje ha sido eliminado!')
+      .setAuthor(
+        `${msgAuthor.username}#${msgAuthor.discriminator}`,
+        `${msgAuthor.displayAvatarURL()}`
+      )
+      .setColor(embedColor)
+      .setDescription(
+        `
+        El mensaje borrado fue:
+        \`\`\`${message.content}\`\`\`
+
+        **Owner:** <@${message?.guild?.ownerID}>
+
+        **Usaba everyone?** ${message.mentions.everyone ? 'Si' : 'No'}
+
+        **Es un bot?**: ${msgAuthor.bot ? 'Si' : 'No'}
+        `
+      )
+
+    message.channel.send(embed)
+  }
 }
