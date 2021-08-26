@@ -2,36 +2,37 @@ import { Client, Message, PartialMessage } from 'discord.js'
 import { config } from './config'
 import { presence } from './utils/botPresence'
 import { init } from './commands'
+import { onMessageDelete } from './onClientEvents/messageDelete'
 
-export const bot: Client = new Client()
+export const client: Client = new Client()
 
-bot.on('ready', () => {
-  console.log(`Bot is ready as ${bot?.user?.tag}!`)
-  presence(bot)
-  bot.setMaxListeners(20)
+client.on('ready', () => {
+  console.log(`Bot is ready as ${client?.user?.tag}!`)
+  presence(client)
+  client.setMaxListeners(20)
 })
 
-bot.on('message', (message: Message) => {
+client.on('message', (message: Message) => {
   if (
     !message.content.startsWith(config.prefix) ||
-    message.author.bot ||
-    message.author === bot.user
+    message.author.client ||
+    message.author === client.user
   )
     return
   const args: string[] = message.content.slice(config.prefix.length).trim().split(/ +/g)
   const command: string = args?.shift()?.toLowerCase() || ''
   console.log(`Comando -> ${command}`)
-  console.log(`Client -> ${bot}`)
+  console.log(`Client -> ${client}`)
   console.log(`Message -> ${message}`)
   init({ command, args, message })
 })
 
-bot.on('guildMemberAdd', async (member) => {
+client.on('guildMemberAdd', async (member) => {
   console.log(member)
 })
 
-bot.on('messageDelete', (message: Message | PartialMessage) => {
-  console.log(message)
+client.on('messageDelete', async (message: Message | PartialMessage) => {
+  onMessageDelete({ message })
 })
 
-bot.login(config.token)
+client.login(config.token)
