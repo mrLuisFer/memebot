@@ -1,8 +1,8 @@
-import { Client, GuildMember, Message, PartialMessage } from 'discord.js'
+import { Client, GuildMember, Message } from 'discord.js'
 import { config } from './config'
 import { presence } from './utils/botPresence'
 import { init } from './commands'
-import { onMessageDelete } from './onClientEvents/messageDelete'
+// import { onMessageDelete } from './onClientEvents/messageDelete'
 
 export const client: Client = new Client()
 
@@ -28,8 +28,8 @@ client.on('guildMemberAdd', async (member: GuildMember): Promise<void> => {
   console.log(typeof member)
 })
 
-client.on('messageDelete', async (message: Message | PartialMessage): Promise<void> => {
-  onMessageDelete({ message })
-})
+// client.on('messageDelete', async (message: Message | PartialMessage): Promise<void> => {
+//  onMessageDelete({ message })
+// })
 
 client.login(config.token)

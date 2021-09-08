@@ -1,16 +1,14 @@
 import { Message } from 'discord.js'
-import {
-  getData,
-  getCustomSubRedditData,
-  getCustomSubRedditNews,
-  getRandomPosts,
-} from './redditApiReq'
+import { getData, getCustomSubRedditData, getRandomPosts } from './redditApiReq'
 import { getRandomEmbedColor } from '../../../utils/embedColors'
 import { apiEmbed } from './apiEmbed'
 import { infoEmbed } from './infoEmbed'
 import { sugEmbed } from './sugEmbed'
 
-function getRandomNumber(array: any[]): number {
+// Utils
+import { getNewsPosts } from './utils/getNewsPosts'
+
+export function getRandomNumber(array: any[]): number {
   const n: number = Math.round(Math.random() * array.length)
   return n
 }
@@ -34,16 +32,7 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
       msg.reply('Coloca un subReddit valido para buscar')
     }
   } else if (firstArg === '--n' || firstArg === '--news') {
-    if (arg.length > 0) {
-      const results = await getCustomSubRedditNews(arg)
-      const randomId: number = getRandomNumber(results)
-      const data = results[randomId]?.data
-
-      const embed = apiEmbed(data, embedColor)
-      msg.channel.send(embed)
-    } else {
-      msg.reply('Coloca un subReddit valido para buscar')
-    }
+    getNewsPosts({ arg, msg })
   } else if (firstArg === '--random' || firstArg === '--r') {
     const results = await getRandomPosts()
     const randomId: number = getRandomNumber(results)
@@ -55,8 +44,7 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
     const embed = sugEmbed(msg, embedColor)
     msg.channel.send(embed)
   } else if (firstArg === '--help' || firstArg?.startsWith('--') || firstArg === '--h') {
-    const embed = infoEmbed(embedColor)
-    msg.channel.send(embed)
+    msg.channel.send(infoEmbed(embedColor))
   } else {
     const results = await getData()
     const randomId: number = getRandomNumber(results)
