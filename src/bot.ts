@@ -1,4 +1,4 @@
-import { Client, Message, PartialMessage } from 'discord.js'
+import { Client, GuildMember, Message, PartialMessage } from 'discord.js'
 import { config } from './config'
 import { presence } from './utils/botPresence'
 import { init } from './commands'
@@ -13,13 +13,8 @@ client.on('ready', () => {
   client.setMaxListeners(20)
 })
 
-client.on('message', (message: Message) => {
-  if (
-    !message.content.startsWith(config.prefix) ||
-    message.author.client ||
-    message.author === client.user
-  )
-    return
+client.on('message', (message: Message): void => {
+  if (!message.content.startsWith(config.prefix) || message.author === client.user) return
 
   const args: string[] = message.content.slice(config.prefix.length).trim().split(/ +/g)
   const command: string = args?.shift()?.toLowerCase() || ''
@@ -29,11 +24,11 @@ client.on('message', (message: Message) => {
   init({ command, args, message })
 })
 
-client.on('guildMemberAdd', async (member) => {
+client.on('guildMemberAdd', async (member: GuildMember): Promise<void> => {
   console.log(typeof member)
 })
 
-client.on('messageDelete', async (message: Message | PartialMessage) => {
+client.on('messageDelete', async (message: Message | PartialMessage): Promise<void> => {
   onMessageDelete({ message })
 })
 
