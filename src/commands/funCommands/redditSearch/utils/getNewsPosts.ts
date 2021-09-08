@@ -16,7 +16,6 @@ export const getNewsPosts = async ({ arg, msg }: Props): Promise<void> => {
     const results = await getCustomSubRedditNews(arg)
     const randomId: number = getRandomNumber(results)
     const data = results[randomId]?.data
-
     const embed = apiEmbed(data, embedColor)
     msg.channel.send(embed)
   } else {
