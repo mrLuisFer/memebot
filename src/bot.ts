@@ -8,6 +8,7 @@ export const client: Client = new Client()
 
 client.on('ready', () => {
   console.log(`Bot is ready as ${client?.user?.tag}!`)
+  console.log(`Prefix: ${config.prefix}`)
   presence(client)
   client.setMaxListeners(20)
 })
@@ -19,6 +20,7 @@ client.on('message', (message: Message) => {
     message.author === client.user
   )
     return
+
   const args: string[] = message.content.slice(config.prefix.length).trim().split(/ +/g)
   const command: string = args?.shift()?.toLowerCase() || ''
   console.log(`Comando -> ${command}`)
@@ -28,7 +30,7 @@ client.on('message', (message: Message) => {
 })
 
 client.on('guildMemberAdd', async (member) => {
-  console.log(member)
+  console.log(typeof member)
 })
 
 client.on('messageDelete', async (message: Message | PartialMessage) => {

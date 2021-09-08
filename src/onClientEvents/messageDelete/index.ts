@@ -24,7 +24,7 @@ export const onMessageDelete = ({ message }: Props) => {
         El mensaje borrado fue:
         \`\`\`${message.content}\`\`\`
 
-        **Owner:** <@${message?.guild?.ownerID}>
+        **Owner:** <@${msgAuthor.id}>
 
         **Usaba everyone?** ${message.mentions.everyone ? 'Si' : 'No'}
 

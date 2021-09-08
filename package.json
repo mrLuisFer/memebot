@@ -10,7 +10,7 @@
     "prepare": "husky install"
   },
   "keywords": [],
-  "author": "",
+  "author": "mrLuisFer",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^12.5.3",
