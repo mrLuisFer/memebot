@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import { getData, getCustomSubRedditData, getRandomPosts } from './redditApiReq'
+import { getData, getCustomSubRedditData } from './redditApiReq'
 import { getRandomEmbedColor } from '../../../utils/embedColors'
 import { apiEmbed } from './apiEmbed'
 import { infoEmbed } from './infoEmbed'
@@ -7,6 +7,7 @@ import { sugEmbed } from './sugEmbed'
 
 // Utils
 import { getNewsPosts } from './utils/getNewsPosts'
+import { getRandomPosts } from './utils/getRandomPosts'
 
 export function getRandomNumber(array: any[]): number {
   const n: number = Math.round(Math.random() * array.length)
@@ -34,15 +35,9 @@ export const getRandomMeme = async ({ msg, arg, firstArg }: Props) => {
   } else if (firstArg === '--n' || firstArg === '--news') {
     getNewsPosts({ arg, msg })
   } else if (firstArg === '--random' || firstArg === '--r') {
-    const results = await getRandomPosts()
-    const randomId: number = getRandomNumber(results)
-    const data = results[randomId].data
-
-    const embed = apiEmbed(data, embedColor)
-    msg.channel.send(embed)
-  } else if (firstArg === '--sug') {
-    const embed = sugEmbed(msg, embedColor)
-    msg.channel.send(embed)
+    getRandomPosts({ msg })
+  } else if (firstArg === '--sug' || firstArg === '--list') {
+    msg.channel.send(sugEmbed(msg, embedColor))
   } else if (firstArg === '--help' || firstArg?.startsWith('--') || firstArg === '--h') {
     msg.channel.send(infoEmbed(embedColor))
   } else {
