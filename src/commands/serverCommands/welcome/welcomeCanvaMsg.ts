@@ -58,26 +58,18 @@ export const welcomeCanvaMsg = async ({ msg, user }: WelcomeCanvaMsgProps) => {
   msg.reply({ files: [attachment] })
 }
 
-type AddContextTextProps = {
+interface AddContextTextProps {
   canvas: Canvas
   text: string
   x: number
   y: number
   fontOptions?: string
-  fillStyle?: string
+  fillStyle?: string | CanvasPattern | CanvasGradient
 }
 const addTextField = ({ text, x, y, canvas, fontOptions, fillStyle }: AddContextTextProps) => {
   const context: NodeCanvasRenderingContext2D = canvas.getContext('2d')
-  if (fontOptions !== undefined && fontOptions.length > 1) {
-    context.font = fontOptions
-  } else {
-    context.font = applyText(canvas, text)
-  }
-  if (fillStyle !== undefined && fillStyle.length > 1) {
-    context.fillStyle = fillStyle
-  } else {
-    context.fillStyle = '#ffffff'
-  }
+  context.font = fontOptions ?? applyText(canvas, text)
+  context.fillStyle = fillStyle ?? '#ffffff'
   context.fillText(text, x, y)
 }
 
