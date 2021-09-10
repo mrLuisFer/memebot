@@ -63,11 +63,21 @@ type AddContextTextProps = {
   text: string
   x: number
   y: number
+  fontOptions?: string
+  fillStyle?: string
 }
-const addTextField = ({ text, x, y, canvas }: AddContextTextProps) => {
+const addTextField = ({ text, x, y, canvas, fontOptions, fillStyle }: AddContextTextProps) => {
   const context: NodeCanvasRenderingContext2D = canvas.getContext('2d')
-  context.font = applyText(canvas, text)
-  context.fillStyle = '#ffffff'
+  if (fontOptions !== undefined && fontOptions.length > 1) {
+    context.font = fontOptions
+  } else {
+    context.font = applyText(canvas, text)
+  }
+  if (fillStyle !== undefined && fillStyle.length > 1) {
+    context.fillStyle = fillStyle
+  } else {
+    context.fillStyle = '#ffffff'
+  }
   context.fillText(text, x, y)
 }
 
