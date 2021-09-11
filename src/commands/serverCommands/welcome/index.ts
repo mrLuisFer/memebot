@@ -1,7 +1,8 @@
-import { Message } from 'discord.js'
+import { Message, User } from 'discord.js'
 import { getRandomEmbedColor } from '../../../utils/embedColors'
 import { welcomeEmbedMsg } from './welcomeEmbedMsg'
 import { helpMsg } from './helpMsg'
+import { welcomeCanvaMsg } from './welcomeCanvaMsg'
 
 type Props = {
   msg: Message
@@ -10,10 +11,11 @@ type Props = {
 
 export const welcome = ({ msg, firstArg }: Props) => {
   const embedColor: string = getRandomEmbedColor()
-  const user = msg?.mentions?.users.first()
-  if (firstArg === '--help' || firstArg === '--h' || firstArg?.startsWith('--')) {
-    const helpEmbedMsg = helpMsg({ embedColor })
-    msg.channel.send(helpEmbedMsg)
+  const user: User = msg?.mentions?.users.first()!
+  if (firstArg === '--help' || firstArg === '--h') {
+    msg.channel.send(helpMsg({ embedColor }))
+  } else if (firstArg === '--canva') {
+    welcomeCanvaMsg({ msg, user })
   } else if (user !== undefined && user !== null) {
     const embed = welcomeEmbedMsg({ user, embedColor })
     msg.channel.send(embed)
