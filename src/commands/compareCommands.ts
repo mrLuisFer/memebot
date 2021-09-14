@@ -57,7 +57,7 @@ export const compareCommand = ({
       welcome({ msg: message, firstArg })
       break
     case 'ytc':
-      youtubeCard()
+      youtubeCard({ msg: message })
       break
     default:
       helpCommand(message)
