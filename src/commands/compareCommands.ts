@@ -1,7 +1,7 @@
 import { Message } from 'discord.js'
 // In case one command needs the client
 // import {client} from '../bot'
-import { getRandomMeme, anime, npm, pokemon } from './funCommands'
+import { getRandomMeme, anime, npm, pokemon, youtubeCard } from './funCommands'
 import { avatarCmd, helpCommand, repo, userInfo, welcome } from './serverCommands'
 
 type Props = {
@@ -55,6 +55,9 @@ export const compareCommand = ({
     case 'welcome':
     case 'w':
       welcome({ msg: message, firstArg })
+      break
+    case 'ytc':
+      youtubeCard()
       break
     default:
       helpCommand(message)
