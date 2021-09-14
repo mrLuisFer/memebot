@@ -3,7 +3,7 @@ require('dotenv').config()
 
 const botToken: string | undefined = process.env.BOT_TOKEN
 // const redditToken: string | undefined = process.env.REDDIT_TOKEN
-const botPrefix: string = 'm!'
+const botPrefix: string = 'm.'
 
 export const config = {
   token: botToken,
