@@ -3,13 +3,18 @@ import { Message, MessageAttachment } from 'discord.js'
 
 type YoutubeCardProps = {
   msg: Message
+  firstArg: string
+  argsFiltered: string
+  args: string[]
 }
-export const youtubeCard = async ({ msg }: YoutubeCardProps) => {
+export const youtubeCard = async ({ msg, firstArg, argsFiltered, args }: YoutubeCardProps) => {
+  const content: string = argsFiltered.replace(/-/g, ' ')
+
   const opts = {
     username: msg.author.username,
-    avatar:
-      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F1.bp.blogspot.com%2F-kK2MFoGYgK0%2FXrW8t7lXRpI%2FAAAAAAAADZU%2FN5UA-NaVaIIg_rjl1h-zn7Dn9R4FcCBAgCLcBGAsYHQ%2Fs1600%2Fdiscord-logo.jpg&f=1&nofb=1',
-    content: `@${msg.author.id}`,
+    avatar: `${msg.author.avatarURL({ format: 'jpg' })}`,
+    content: `${args === undefined ? 'Escribe algo depues de ejecutar el comando' : content}`,
+    dark: firstArg === '--dark',
   }
 
   const card = await Canvacord.youtube(opts)
