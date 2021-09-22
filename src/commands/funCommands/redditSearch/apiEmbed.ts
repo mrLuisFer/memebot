@@ -11,6 +11,7 @@ export const apiEmbed = (data: any, embedColor: string): MessageEmbed => {
       const apiData = data === undefined ? { url: '', thumbnail: '' } : data
       const img: string =
         apiData?.url !== null || apiData?.url !== undefined ? apiData.url : apiData.thumbnail
+      console.log(img)
 
       const msgEmbed = new MessageEmbed()
         .setAuthor(data?.subreddit_name_prefixed)
